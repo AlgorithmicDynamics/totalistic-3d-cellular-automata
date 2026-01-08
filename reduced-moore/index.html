@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>3D Cellular Automaton (19-cell neighborhood)</title>
 
+<link rel="stylesheet" href="style.css" />
+<script src="3d.js"></script>
+</head>
+
+<body>
+
+<div class="topbuttons">
+	<input type="button" id="btnStart" value="Start" onclick="start();" />
+	<input type="button" value="Stop" onclick="stop();" />
+	<input type="button" value="One step" onclick="oneStep();" />
+	<input type="button" value="Clear" onclick="clearpage();" />
+	<input type="button" value="Random rule" onclick="nexta(true);" />
+</div>
+
+<br />
+
+Field size:
+<select id="fieldSize" onchange="applyFieldSize()">
+	<option>32</option>
+	<option>64</option>
+	<option>89</option>
+	<option selected="selected">128</option>
+	<option>233</option>
+	<option>256</option>
+	<option>377</option>
+	<option>512</option>
+</select>
+
+Pixel size:
+<select id="pixelSize" onchange="applyPixelSize()">
+	<option>1</option>
+	<option selected>4</option>
+	<option>8</option>
+</select>
+
+<br /><br />
+
+Initial state:
+<label><input type="radio" name="initState" value="random" checked onclick="clearpage()"> Random</label>
+<label><input type="radio" name="initState" value="center" onclick="clearpage()"> Single center cell</label>
+<label><input type="radio" name="initState" value="chunks" onclick="clearpage()"> Sparse chunks</label>
+
+<br /><br />
+
+<canvas id="myCanvas"></canvas>
+
+<br />
+
+<div class="zslice-panel">
+	Z slice: <span id="zval">0</span>
+	<input type="range" id="zslice" min="0" max="127" value="0" oninput="setz(this.value)">
+</div>
+
+<div id="console-log0"></div>
+
+<hr />
+
+<div class="rule-panel">
+<b>Rule editor (19-cell totalistic)</b><br><br>
+
+<input id="ruleInput" type="text" size="40"
+	value="11111101110110001100010111101000111000"
+	oninput="ruleFromText()">
+
+<br><br>
+
+<div>If the cell is <b>EMPTY</b>:</div>
+<div id="ruleBitsRow0" class="rule-row"></div>
+
+<br>
+
+<div>If the cell is <b>ALIVE</b>:</div>
+<div id="ruleBitsRow1" class="rule-row"></div>
+
+<div class="rule-explain">
+Each checkbox corresponds to the <b>total number of active cells</b><br>
+in a 19-cell neighborhood (center + faces + edges).
+</div>
+</div>
+
+<script>init();</script>
+
+</body>
+</html>
