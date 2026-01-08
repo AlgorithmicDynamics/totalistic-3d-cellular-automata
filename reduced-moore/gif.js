@@ -10,7 +10,7 @@ const sizez = 128;
 const pixel = 4;
 
 const warmupIterations = 100;
-const frameStep = 2;
+const frameStep = 1;
 const frameDelay = 80;
 
 // 38-bit totalistic rule (19 empty + 19 alive)
@@ -159,3 +159,4 @@ for (let z = 0; z < sizez; z += frameStep) {
 
 encoder.finish();
 console.log(`GIF saved: ${filename}`);
+
