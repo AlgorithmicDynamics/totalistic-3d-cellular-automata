@@ -112,13 +112,18 @@ function setz(v){
 /* ================= CONTROL ================= */
 
 function start(){
-	if(!timerId)
+	if(!timerId){
 		timerId=setInterval(()=>{stepCA();draw();},1);
+		let btn = document.getElementById("btnStart");
+		if(btn) btn.classList.add("active");
+	}
 }
 
 function stop(){
 	clearInterval(timerId);
 	timerId=false;
+	let btn = document.getElementById("btnStart");
+	if(btn) btn.classList.remove("active");
 }
 
 function oneStep(){ stepCA(); draw(); }
@@ -237,3 +242,4 @@ function init(){
 	buildRule();
 	clearpage();
 }
+
