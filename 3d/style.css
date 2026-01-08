@@ -91,6 +91,28 @@ canvas {
 	border: 1px solid var(--cyan);
 }
 
+/* ===== Z SLICE CONTROL ===== */
+
+.zslice-panel {
+    margin-top: 14px;
+    padding: 10px 12px;
+	max-width: 640px;
+    border: 1px solid var(--cyan);
+    background: var(--panel);
+}
+
+.zslice-label {
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 6px;
+}
+
+.zslice-panel input[type="range"] {
+    width: 100%;
+    height: 28px;
+    cursor: pointer;
+}
+
 /* ===== INFO ===== */
 
 #console-log0,
@@ -157,6 +179,8 @@ canvas {
 	padding: 16px 18px;
 	font-size: 16px;
 }
+
+/* ===== LINKS ===== */
 
 a {
 	color: var(--cyan);
