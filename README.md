@@ -10,16 +10,20 @@ rule spaces, and structural dynamics in discrete 3D systems.
 
 ---
 
+**Links**
+
+- [Live demo](https://algorithmicdynamics.com/3d/)
+- [Mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/3d/)
+- [Source repository](https://github.com/AlgorithmicDynamics/totalistic-3d-cellular-automata)
+
+---
+
 ## Live Demo
 
-An interactive, browser-based version of the automaton is available here:
-
-[Demo](https://algorithmicdynamics.com/3d/)
-
-[Mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/3d/)
+An interactive, browser-based version of the automaton is available at the links above.
 
 The demo allows real-time rule editing, iteration control, and slice-based visualization
-of the evolving 3D field.
+of the evolving 3D lattice.
 
 ---
 
