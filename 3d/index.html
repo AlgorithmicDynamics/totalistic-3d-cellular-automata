@@ -13,7 +13,7 @@
 <div class="topbuttons">
 	<input type="button" id="btnStart" value="Start" onclick="start();" />
 	<input type="button" id="btnStop"	value="Stop"	onclick="stop();" />
-		<input type="button" value="One step" onclick="countpoints();" />
+		<input type="button" value="One step" onclick="oneStep();" />
 		<input type="button" value="Clear" onclick="clearpage();" />
 		<input type="button" value="Random rule" onclick="nexta(true);" />
 </div>
@@ -42,13 +42,58 @@ Pixel size:
 
 <br /><br />
 
-Z slice:
-<input type="range" id="zslice" min="0" max="31" value="0" oninput="setz(this.value)" />
-<span id="zval">0</span>
+Initial state:
+<label>
+	<input
+		type="radio"
+		name="initState"
+		value="random"
+		checked="checked"
+		onclick="clearpage()"
+	/>
+	Random
+</label>
+
+<label>
+	<input
+		type="radio"
+		name="initState"
+		value="center"
+		onclick="clearpage()"
+	/>
+	Single center cell
+</label>
+
+<label>
+	<input
+		type="radio"
+		name="initState"
+		value="chunks"
+		onclick="clearpage()"
+	/>
+	Sparse random chunks
+</label>
 
 <br /><br />
 
 <canvas id="myCanvas"></canvas>
+
+<br /><br />
+
+<div class="zslice-panel">
+	<div class="zslice-label">
+		Z slice: <span id="zval">0</span>
+	</div>
+
+	<input
+		type="range"
+		id="zslice"
+		min="0"
+		max="31"
+		value="0"
+		oninput="setz(this.value)"
+	/>
+</div>
 
 <br />
 
