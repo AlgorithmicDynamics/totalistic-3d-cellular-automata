@@ -1,0 +1,170 @@
+:root {
+	--bg: #000;
+	--panel: #0a0a0a;
+
+	--cyan: #5ff;
+	--magenta: #f5f;
+	--white: #fff;
+	--dim: #888;
+
+	--border-dim: #222;
+}
+
+/* ===== BASE ===== */
+
+body {
+	background: var(--bg);
+	color: var(--white);
+	font-family: monospace;
+	margin: 0;
+	padding: 20px;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--border-dim);
+	margin: 28px 0;
+}
+
+/* ===== TOP CONTROLS ===== */
+
+.topbuttons {
+	display: inline-block;
+	padding: 10px 12px;
+	margin-bottom: 14px;
+
+	background: var(--panel);
+	border: 1px solid var(--cyan);
+}
+
+.topbuttons input {
+	margin: 4px;
+	padding: 4px 8px;
+
+	background: #111;
+	color: var(--cyan);
+
+	border: 1px solid var(--cyan);
+	font-family: monospace;
+	cursor: pointer;
+}
+
+.topbuttons input:hover {
+	background: #000;
+	color: var(--white);
+	border-color: var(--magenta);
+}
+
+.topbuttons input.active {
+	background: #000;
+	color: var(--magenta);
+	border-color: var(--magenta);
+}
+
+.topbuttons input.active:hover {
+	color: var(--white);
+}
+
+/* ===== SELECTS & RANGE ===== */
+
+select,
+input[type="range"] {
+	margin-left: 6px;
+	margin-right: 14px;
+}
+
+select {
+	padding: 2px 4px;
+	background: #111;
+	color: var(--magenta);
+	border: 1px solid var(--magenta);
+	font-family: monospace;
+}
+
+/* ===== CANVAS ===== */
+
+canvas {
+	display: block;
+	margin-top: 16px;
+
+	background: #000;
+	border: 1px solid var(--cyan);
+}
+
+/* ===== INFO ===== */
+
+#console-log0,
+#console-log1 {
+	font-size: 12px;
+	color: var(--dim);
+	margin-top: 6px;
+}
+
+/* ===== RULE PANEL ===== */
+
+.rule-panel {
+	background: var(--panel);
+	border: 1px solid var(--magenta);
+	padding: 16px 18px;
+	max-width: 640px;
+}
+
+.rule-panel b {
+	color: var(--cyan);
+}
+
+/* ===== RULE INPUT ===== */
+
+.rule-panel input[type="text"] {
+	width: 360px;
+	padding: 4px 6px;
+
+	background: #000;
+	color: var(--white);
+
+	border: 1px solid var(--cyan);
+	font-family: monospace;
+}
+
+/* ===== RULE CHECKBOX GRID ===== */
+
+.rule-row {
+	display: grid;
+	grid-template-columns: repeat(7, 20px);
+	gap: 0;
+	margin-left: 6px;
+}
+
+.rule-row input[type="checkbox"] {
+	margin: 0;
+	accent-color: var(--magenta);
+}
+
+/* ===== EXPLANATION TEXT ===== */
+
+.rule-explain {
+	font-size: 12px;
+	color: var(--dim);
+	line-height: 1.55;
+	margin-top: 14px;
+}
+
+.container {
+	border: 1px solid var(--magenta);
+	margin-top: 16px;
+	
+	display: inline-block;
+	padding: 16px 18px;
+	font-size: 16px;
+}
+
+a {
+	color: var(--cyan);
+	text-decoration: none;
+	border-bottom: 1px solid var(--cyan);
+}
+
+a:hover {
+	color: var(--magenta);
+	border-bottom-color: var(--magenta);
+}

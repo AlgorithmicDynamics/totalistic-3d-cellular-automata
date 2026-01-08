@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>3D Cellular Automaton (Von Neumann neighborhood)</title>
+
+<link rel="stylesheet" href="style.css" />
+<script src="3d.js"></script>
+</head>
+
+<body>
+
+<div class="topbuttons">
+	<input type="button" id="btnStart" value="Start" onclick="start();" />
+	<input type="button" id="btnStop"	value="Stop"	onclick="stop();" />
+		<input type="button" value="One step" onclick="countpoints();" />
+		<input type="button" value="Clear" onclick="clearpage();" />
+		<input type="button" value="Random rule" onclick="nexta(true);" />
+</div>
+
+<br />
+
+Field size:
+<select id="fieldSize" onchange="applyFieldSize()">
+		<option>32</option>
+		<option>64</option>
+		<option>89</option>
+		<option selected="selected">128</option>
+		<option>233</option>
+		<option>256</option>
+		<option>377</option>
+		<option>512</option>
+</select>
+
+Pixel size:
+<select id="pixelSize" onchange="applyPixelSize()">
+		<option>1</option>
+		<option>2</option>
+		<option selected="selected">4</option>
+		<option>8</option>
+</select>
+
+<br /><br />
+
+Z slice:
+<input type="range" id="zslice" min="0" max="31" value="0" oninput="setz(this.value)" />
+<span id="zval">0</span>
+
+<br /><br />
+
+<canvas id="myCanvas"></canvas>
+
+<br />
+
+<div id="console-log0"></div>
+
+<hr />
+
+<div class="rule-panel">
+
+<b>Rule editor</b>
+<br /><br />
+
+<input type="text"
+			 id="ruleInput"
+			 value="11000001010001"
+			 oninput="ruleFromText()" />
+
+<br /><br />
+
+<div style="font-size:13px;color:var(--dim);margin-bottom:6px">
+If the cell is <b>EMPTY</b>:
+</div>
+
+<div id="ruleBitsRow0" class="rule-row"></div>
+
+<br />
+
+<div style="font-size:13px;color:var(--dim);margin-bottom:6px">
+If the cell is <b>ALIVE</b>:
+</div>
+
+<div id="ruleBitsRow1" class="rule-row"></div>
+
+<div class="rule-explain">
+Each checkbox corresponds to a specific <b>total number of active cells</b> in the local neighborhood.
+The neighborhood consists of the cell itself plus its six direct neighbors
+(left, right, up, down, front, back).
+<br /><br />
+For an <b>empty</b> cell, the top row defines when it should become active.
+For a <b>live</b> cell, the bottom row defines when it should stay active.
+<br /><br />
+In each row, checkboxes are ordered from <b>lowest</b> to <b>highest</b> total activity.
+If the checkbox for the current activity level is checked, the cell will be <b>ON</b> in the next step;
+otherwise it will be <b>OFF</b>.
+</div>
+
+</div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+init();
+/* ]]> */
+</script>
+
+<div class="container">
+	<p class="link">
+		<a href="https://github.com/AlgorithmicDynamics">github.com/AlgorithmicDynamics</a>
+	</p>
+</div>
+
+</body>
+</html>
