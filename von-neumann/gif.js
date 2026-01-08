@@ -10,7 +10,7 @@ const sizez = 128;
 const pixel = 4;
 
 const warmupIterations = 100;
-const frameStep = 2;     // z-slice step
+const frameStep = 1;     // z-slice step
 const frameDelay = 80;
 
 const r_string = "11000001010001";
@@ -126,3 +126,4 @@ for (let z = 0; z < sizez; z += frameStep) {
 
 encoder.finish();
 console.log(`GIF saved: ${filename}`);
+
