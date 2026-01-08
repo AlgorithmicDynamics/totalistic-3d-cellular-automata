@@ -14,7 +14,9 @@ rule spaces, and structural dynamics in discrete 3D systems.
 
 An interactive, browser-based version of the automaton is available here:
 
-**https://algorithmicdynamics.com/3d/**
+[Demo](https://algorithmicdynamics.com/3d/)
+
+[Mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/3d/)
 
 The demo allows real-time rule editing, iteration control, and slice-based visualization
 of the evolving 3D field.
