@@ -12,7 +12,7 @@ rule spaces, and structural dynamics in discrete 3D systems.
 
 **Links**
 
-- [Live demo](https://algorithmicdynamics.com/3d/)
+- [Live demo](https://algorithmicdynamics.com/von-neumann/)
 - [Mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/von-neumann/)
 - [Source repository](https://github.com/AlgorithmicDynamics/totalistic-3d-cellular-automata)
 
