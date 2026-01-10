@@ -17,6 +17,8 @@ All implementations run entirely in the browser and are available via **GitHub P
 
 ### 1. Von Neumann Neighborhood (7-cell, totalistic)
 
+![11100010011000](images/ca3d_11100010011000_1768088908710.gif)
+
 A minimal 3D totalistic automaton based on the **Von Neumann neighborhood**
 (center cell + 6 axis-aligned neighbors).
 
@@ -33,6 +35,8 @@ A minimal 3D totalistic automaton based on the **Von Neumann neighborhood**
 ---
 
 ### 2. Reduced Moore Neighborhood (19-cell, totalistic)
+
+![10000000010010101000000000000000101001](images/ca3d_19cell_10000000010010101000000000000000101001_1768088365740.gif)
 
 An extended neighborhood including **faces and edges**, but excluding corners
 (center + 18 neighbors).
