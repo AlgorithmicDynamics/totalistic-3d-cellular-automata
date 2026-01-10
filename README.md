@@ -2,113 +2,140 @@
 
 ![Preview](images/ca3d_11100010011000_1767834132068.gif)
 
-This project is an interactive environment for exploring **three-dimensional totalistic cellular automata**
-defined on a **Von Neumann neighborhood**.
+This repository contains a collection of **interactive, browser-based implementations of three-dimensional totalistic cellular automata**, developed as part of the **AlgorithmicDynamics** project.
 
-The system is designed as a compact, research-oriented tool for studying emergent behavior,
-rule spaces, and structural dynamics in discrete 3D systems.
+The focus is on **rule-space exploration**, **emergent structure**, and **visual analysis** of discrete dynamical systems in 3D.
 
----
+➡ **Source repository:**  
+[github.com/AlgorithmicDynamics/totalistic-3d-cellular-automata](https://github.com/AlgorithmicDynamics/totalistic-3d-cellular-automata)
 
-**Links**
-
-- [Live demo](https://algorithmicdynamics.com/von-neumann/)
-- [Mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/von-neumann/)
-- [Source repository](https://github.com/AlgorithmicDynamics/totalistic-3d-cellular-automata)
+All implementations run entirely in the browser and are available via **GitHub Pages** and **algorithmicdynamics.com**.
 
 ---
 
-## Live Demo
+## Live Systems
 
-An interactive, browser-based version of the automaton is available at the links above.
+### 1. Von Neumann Neighborhood (7-cell, totalistic)
 
-The demo allows real-time rule editing, iteration control, and slice-based visualization
-of the evolving 3D lattice.
+A minimal 3D totalistic automaton based on the **Von Neumann neighborhood**
+(center cell + 6 axis-aligned neighbors).
 
----
+- **Rule size:** 14 bits  
+  - 7 conditions for empty → alive  
+  - 7 conditions for alive → alive
+- **Neighborhood:** center + faces
+- **Rule space:** strongly compressed, symmetric
 
-## Overview
-
-Each cell in the lattice updates its state based on:
-
-- Its **own current state**
-- The states of its **six direct neighbors**
-  (left, right, up, down, front, back)
-
-The rule depends only on the **total number of active cells** in this local neighborhood,
-including the center cell itself.
-No directional or positional information is used.
-
-This makes the automaton **totalistic and symmetric by construction**.
+**Live demo**
+- [algorithmicdynamics.com/von-neumann](https://algorithmicdynamics.com/von-neumann/)
+- [GitHub Pages mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/von-neumann/)
 
 ---
 
-## Rule Encoding
+### 2. Reduced Moore Neighborhood (19-cell, totalistic)
 
-Instead of defining a full lookup table for all possible neighborhood configurations,
-the update rule is **compressed into 14 binary parameters**.
+An extended neighborhood including **faces and edges**, but excluding corners
+(center + 18 neighbors).
 
-The parameters are interpreted as follows:
+This variant significantly increases structural richness while remaining
+fully totalistic and isotropic.
 
-- **7 parameters** specify when an **empty cell becomes active**
-- **7 parameters** specify when an **active cell remains active**
+- **Rule size:** 38 bits  
+  - 19 conditions for empty → alive  
+  - 19 conditions for alive → alive
+- **Neighborhood:** center + faces + edges
+- **Rule space:** large but still tractable
 
-Each parameter corresponds to a specific total activity level
-(number of active cells in the neighborhood, including the center cell).
-
-This encoding dramatically reduces the rule space while preserving a wide range of behaviors,
-making it suitable for systematic exploration and experimentation.
+**Live demo**
+- [algorithmicdynamics.com/reduced-moore](https://algorithmicdynamics.com/reduced-moore/)
+- [GitHub Pages mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/reduced-moore/)
 
 ---
 
-## Visualization
+### 3. Genetic Algorithm Explorer (19-cell, interactive evolution)
 
-The automaton evolves in a cubic 3D lattice.
-Visualization is performed by rendering a **2D slice** of the volume along the Z axis.
+A **manual genetic algorithm** layered on top of the 19-cell totalistic automaton.
 
-Features include:
+Instead of editing rules directly, the user **selects visually interesting behaviors**,
+which are then evolved through selection, crossover, and mutation.
 
-- Adjustable lattice size (cubic)
-- Real-time iteration
-- Z-slice navigation
+- **Genome:** 38-bit totalistic rule
+- **Population:** persistent via local storage
+- **Fitness:** user-driven (visual selection)
+- **Purpose:** discovery of unexpected or complex dynamics
+
+**Live demo**
+- [algorithmicdynamics.com/genetic_algorithm](http://algorithmicdynamics.com/genetic_algorithm/)
+- [GitHub Pages mirror](https://algorithmicdynamics.github.io/totalistic-3d-cellular-automata/genetic_algorithm/)
+
+---
+
+## Core Concepts
+
+All systems in this repository share the following principles:
+
+- Three-dimensional cubic lattice
+- Binary cell states (alive / empty)
+- Synchronous updates
+- Totalistic rules  
+  (depend only on the number of active cells, not their arrangement)
+- Toroidal boundary conditions
+- 2D Z-slice visualization for inspection of 3D structure
+
+The goal is not physical simulation, but **algorithmic exploration of emergent form**.
+
+---
+
+## Visualization Model
+
+Because full 3D rendering is intentionally avoided, all systems expose:
+
+- Adjustable lattice size
 - Adjustable pixel scale
-- Direct rule editing via binary strings and bit controls
+- Real-time iteration
+- Interactive Z-slice navigation
+- Direct rule manipulation (or evolutionary selection)
 
-The interface is intentionally minimal and instrument-like,
-favoring clarity and direct manipulation over abstraction.
+This keeps the tools **fast**, **inspectable**, and suitable for **static hosting**.
 
 ---
 
 ## Intended Use
 
-This project is intended for:
+This repository is intended for:
 
-- Experimental exploration of 3D cellular automata
-- Studying stability, extinction, oscillation, and structural formation
-- Investigating compressed rule spaces
-- Educational and research-oriented visualization
+- Exploration of 3D cellular automata behavior
+- Study of compressed rule spaces
+- Investigation of stability, extinction, oscillation, and structure formation
+- Educational and research-oriented experimentation
 
-It is not a game and not a simulation of any physical system.
-The focus is on **algorithmic structure and emergent dynamics**.
+It is **not a game** and **not a physical model**.
 
 ---
 
 ## Implementation
 
 - Plain HTML, CSS, and JavaScript
-- No external frameworks
-- Designed to run directly in the browser
-- Suitable for static hosting (e.g. GitHub Pages)
+- No external libraries
+- Runs fully in the browser
+- Designed for GitHub Pages and static hosting
+
+Each subdirectory is a **self-contained system**.
 
 ---
 
-## Organization
+## About AlgorithmicDynamics
 
-This repository is part of the **AlgorithmicDynamics** organization,
-which focuses on experimental systems, symbolic dynamics,
-cellular automata, fractals, and related algorithmic structures.
+**AlgorithmicDynamics** is an open research initiative focused on:
+
+- Cellular automata
+- Symbolic dynamics
+- Fractals
+- Genetic and evolutionary systems
+- Algorithmic structure and emergence
 
 ---
 
 ## License
+
 MIT License. See [LICENSE](LICENSE) for details.
