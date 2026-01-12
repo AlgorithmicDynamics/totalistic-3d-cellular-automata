@@ -15,7 +15,7 @@
 	<input type="button" value="Stop" onclick="stop();" />
 	<input type="button" value="One step" onclick="oneStep();" />
 	<input type="button" value="Clear" onclick="clearpage();" />
-	<input type="button" value="Random rule" onclick="nexta(true);" />
+	<input type="button" value="Random rule" onclick="randomRule();" />
 </div>
 
 <br />
@@ -83,6 +83,25 @@ Initial state:
 Each checkbox corresponds to the <b>total number of active cells</b><br>
 in a 19-cell neighborhood (center + faces + edges).
 </div>
+
+<div class="rule-constraints">
+	<label>
+		<input type="checkbox" id="useCaseRule" onchange="onCaseModeChange()">
+		Constrain random rule by totalistic counts
+	</label>
+
+	<div class="case-controls">
+		<label>
+			Center = 0 → ones
+			<select id="caseB" onchange="onCaseParamsChange()"></select>
+		</label>
+
+		<label>
+			Center = 1 → ones
+			<select id="caseA" onchange="onCaseParamsChange()"></select>
+		</label>
+	</div>
+</div>
 </div>
 
 <script>init();</script>
@@ -95,7 +114,3 @@ in a 19-cell neighborhood (center + faces + edges).
 
 </body>
 </html>
-
-
-
-
