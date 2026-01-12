@@ -36,6 +36,31 @@ function buildRule(){
 	}
 }
 
+function randomKofN(k, n){
+	const a = new Array(n).fill(0);
+	for (let i = 0; i < k; i++) a[i] = 1;
+	for (let i = n - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
+}
+
+function applyCaseRule() {
+	const a = parseInt(document.getElementById('caseA').value, 10);
+	const b = parseInt(document.getElementById('caseB').value, 10);
+
+	r = [
+		...randomKofN(b, 19), // center = 0
+		...randomKofN(a, 19)  // center = 1
+	];
+
+	ruleInput.value = r.join('');
+	updateRuleCheckboxes();
+	buildRule();
+	clearpage();
+}
+
 /* ===== 19-CELL NEIGHBORHOOD ===== */
 
 function neighborhood(x,y,z){
@@ -208,6 +233,34 @@ function updateRuleCheckboxes(){
 		document.getElementById("rbit"+i).checked=!!r[i];
 }
 
+
+
+function onCaseModeChange() {
+	if (useCaseRule.checked) {
+		applyCaseRule();
+	}
+}
+
+function initCaseSelectors() {
+	const selA = document.getElementById('caseA');
+	const selB = document.getElementById('caseB');
+
+	for (let i = 0; i <= 19; i++) {
+		const o1 = document.createElement('option');
+		o1.value = i;
+		o1.textContent = i;
+		selA.appendChild(o1);
+
+		const o2 = document.createElement('option');
+		o2.value = i;
+		o2.textContent = i;
+		selB.appendChild(o2);
+	}
+	
+	selA.value = 3; // center = 1
+	selB.value = 3; // center = 0
+}
+
 /* ================= UI ================= */
 
 function applyFieldSize(){
@@ -228,6 +281,20 @@ function nexta(){
 	clearpage();
 }
 
+function randomRule(){
+	if (useCaseRule.checked) {
+		applyCaseRule();
+	} else {
+		nexta();
+	}
+}
+
+function onCaseParamsChange(){
+	if (useCaseRule.checked) {
+		applyCaseRule();
+	}
+}
+
 /* ================= INIT ================= */
 
 function init(){
@@ -241,5 +308,5 @@ function init(){
 	updateRuleCheckboxes();
 	buildRule();
 	clearpage();
+	initCaseSelectors();
 }
-
