@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CA Rule Space Viewer</title>
+<style>
+	html, body {
+		margin: 0;
+		background: #000;
+		color: #aaa;
+		font-family: monospace;
+	}
+
+	#info {
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		background: rgba(0,0,0,0.7);
+		padding: 6px 8px;
+		border: 1px solid #444;
+		pointer-events: none;
+	}
+
+	canvas {
+		display: block;
+	}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div id="info">loading…</div>
+
+<script src="plot_web.js"></script>
+</body>
+</html>
