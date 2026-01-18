@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>3D CA Viewer — Full Rule (524288)</title>
 
+<link rel="stylesheet" href="style.css" />
+<script src="viewer.js"></script>
+</head>
+
+<body>
+
+<div class="topbuttons">
+	<input type="button" id="btnStart" value="Start" onclick="start();" />
+	<input type="button" value="Stop" onclick="stop();" />
+	<input type="button" value="One step" onclick="oneStep();" />
+	<input type="button" value="Clear" onclick="clearpage();" />
+</div>
+
+<br />
+
+<div class="panel panel-cyan">
+	<div class="panel-title">Field configuration</div>
+
+	Field size:
+	<select id="fieldSize" onchange="applyFieldSize()">
+		<option>64</option>
+		<option>89</option>
+		<option selected>128</option>
+		<option>144</option>
+		<option>256</option>
+		<option>377</option>
+		<option>512</option>
+	</select>
+
+	Pixel size:
+	<select id="pixelSize" onchange="applyPixelSize()">
+		<option>1</option>
+		<option>2</option>
+		<option selected>4</option>
+		<option>8</option>
+	</select>
+
+	<br />
+
+	Initial state:
+	<label><input type="radio" name="initState" value="random" checked onclick="clearpage()"> Random</label>
+	<label><input type="radio" name="initState" value="center" onclick="clearpage()"> Center</label>
+	<label><input type="radio" name="initState" value="chunks" onclick="clearpage()"> Chunks</label>
+</div>
+
+<br />
+
+<div class="panel panel-magenta">
+	<div class="panel-title">Load rule from GA (IndexedDB)</div>
+
+	<select id="gaRuleSelect" onchange="loadFromGA(this.value)">
+		<option value="">-- select GA genome --</option>
+	</select>
+</div>
+
+<br />
+
+<canvas id="myCanvas"></canvas>
+
+<div class="zslice-panel">
+	Z slice: <span id="zval">0</span>
+	<input type="range" id="zslice" min="0" max="127" value="0" oninput="setz(this.value)">
+</div>
+
+<div id="console-log0"></div>
+
+<script>init();</script>
+
+</body>
+</html>
