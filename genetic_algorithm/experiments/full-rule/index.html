@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>3D CA — Manual GA (524 288 bit rule)</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript" src="sound.js"></script>
+	<script type="text/javascript" src="draw.js"></script>
+</head>
+<body>
 
+<div class="topbuttons">
+	<input type="button" value="Start" onClick="start();" />
+	<input type="button" value="Stop" onClick="stop();" />
+	<input type="button" value="One" onClick="onestep();" />
+	<input type="button" value="Clear" onClick="clearc();" />
+	<input type="button" value="Clear (center cell)" onClick="clearone();" />
+	<input type="button" value="Count 5000" onClick="count100(5000);" />
+	<input type="button" value="Count 1000" onClick="count100(1000);" />
+	<input type="button" value="Count 500" onClick="count100(500);" />
+	<input type="button" value="Count 200" onClick="count100(200);" />
+	<input type="button" value="Count 100" onClick="count100(100);" />
+	<input type="button" value="Count 30" onClick="count100(30);" />
+</div>
+
+<!-- Z slicer (added) -->
+<div class="topbuttons" style="display:block;">
+	Z slice: <span id="zval">0</span>
+	<input type="range" id="zslice" min="0" max="31" value="0" oninput="setz(this.value)" style="width:360px;" />
+</div>
+
+<div id="canv"></div>
+
+<div class="footerbuttons">
+	<input type="button" value="Select" onClick="selectc();" />
+
+	<div id="mp1">Mutations <input type="text" id="mutatepercent" value="20" /> %</div>
+	<div id="mp2">Gens <input type="text" id="mutategen" value="4" />/524288</div>
+
+	<hr />
+	<input type="button" value="Start evolution" onClick="evolute();" />
+	<hr />
+
+	<div>
+		Density <input type="text" id="genomedensity" value="0.0477" size="50" />
+		<input type="button" value="Recreate" onClick="recreate();" />
+	</div>
+</div>
+
+<div id="console-log1"></div>
+<div id="console-log2"></div>
+<div id="console-log3"></div>
+
+<script>
+	init();
+</script>
+
+</body>
+</html>
