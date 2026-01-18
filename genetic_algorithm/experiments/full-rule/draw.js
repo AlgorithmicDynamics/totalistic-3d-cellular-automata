@@ -35,13 +35,6 @@ function supportsLocalStorage(){
 	return ('localStorage' in window) && window['localStorage'] !== null;
 }
 
-/*
-	IMPORTANT:
-	- fitness stays in localStorage (small)
-	- population goes to IndexedDB (big)
-	- saveFitness and savePopulation remain SEPARATE on purpose (do NOT merge)
-*/
-
 // ===== IndexedDB (population storage) =====
 const DB_NAME = 'cell_ga_db';
 const DB_VERSION = 1;
@@ -219,8 +212,6 @@ function newPopulation(){
 	population = new Array(PopulationSize);
 	fitness = new Array(PopulationSize);
 
-	// DO NOT nuke localStorage fitness unless you really want to.
-	// But old populations become incompatible anyway, so clear fitness.
 	if (supportsLocalStorage()){
 		localStorage.removeItem("cell.fitness");
 	}
@@ -253,7 +244,7 @@ function realrand(){
 
 
 // ===== 3D NEIGHBORHOOD (faces+edges+center = 19) =====
-// RE-INDEXED (more symmetrical, as requested)
+// RE-INDEXED (more symmetrical)
 function neighborhood(state, x, y, z){
 	var xm=(x-1+sizex)%sizex, xp=(x+1)%sizex;
 	var ym=(y-1+sizey)%sizey, yp=(y+1)%sizey;
@@ -378,13 +369,14 @@ function clearpage(changenumbers=true){
 		states[n] = alloc3D();
 		seedRandom3D(states[n]);
 
-		// DIRECT full rule table (no buildRuleFromGenotype bottleneck)
 		ruleTables[n] = population[ rulesnumbers[n] ];
 	}
 
 	drawAll();
+	
+	var hello0 = document.getElementById('console-log0');
+	if (hello0) hello0.innerHTML = rulesnumbers.join(', ');
 
-	// console-log1 still ok (fitness list)
 	var hello1 = document.getElementById('console-log1');
 	if (hello1) hello1.innerHTML = fitness.join(', ');
 
@@ -402,7 +394,6 @@ function clearone(){
 		states[n] = alloc3D();
 		seedCenter3D(states[n]);
 
-		// DIRECT full rule table
 		ruleTables[n] = population[ rulesnumbers[n] ];
 	}
 
@@ -417,6 +408,9 @@ function clearone(){
 	if (zv) zv.innerHTML = zslice;
 
 	drawAll();
+	
+	var hello0 = document.getElementById('console-log0');
+	if (hello0) hello0.innerHTML = rulesnumbers.join(', ');
 
 	var hello1 = document.getElementById('console-log1');
 	if (hello1) hello1.innerHTML = fitness.join(', ');
@@ -470,7 +464,7 @@ function selectc(){
 		}
 	}
 
-	// DO NOT touch population here. Fitness only.
+	//Fitness only.
 	saveFitness();
 
 	clearpage();
@@ -481,7 +475,7 @@ function selectc(){
 }
 
 
-// ===== GA CORE (preserved; now rulesize=524288) =====
+// ===== GA CORE (rulesize=524288) =====
 function sortf(c, d) {
 	if (c[1] < d[1]) return 1;
 	else if (c[1] > d[1]) return -1;
@@ -551,7 +545,7 @@ function evolute(){
 		fitness[i3]=0;
 	}
 
-	// mutation (UNCHANGED LOGIC)
+	// mutation
 	var m = 100/mutation;
 	var m2 = mutategen;
 
@@ -578,7 +572,7 @@ function evolute(){
 }
 
 
-// ===== RECREATE (requested) =====
+// ===== RECREATE =====
 function recreate(){
 	stop();
 	newPopulation();
@@ -597,20 +591,17 @@ function start(){
 			countpoints();
 		}, 1);
 	}
-	//startHum();
 }
 function stop(){
 	if (timerId){
 		clearInterval(timerId);
 		timerId = false;
 	}
-	//stopHum();
 }
 
 
 // ===== INIT =====
 function init(){
-	// preview canvases (UI stays)
 	var canv = document.getElementById('canv');
 	for (var n=0; n<cellscount; n++){
 		var canvas1 = document.createElement('canvas');
